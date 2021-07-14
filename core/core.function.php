@@ -31,6 +31,16 @@
 		}
 		return date('F d, Y h:mA', strtotime($date));
 	}
+
+	function set_flash($title,$description){
+		$_SESSION[$title] = $description;
+	}
+
+	function display_flash($title){
+		echo $_SESSION[$title];
+		unset($_SESSION[$title]);
+	}
+
 	function redirect($link){
 		header("location:".$link);
 	}

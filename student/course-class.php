@@ -110,26 +110,27 @@ $colors = ['primary','success','danger','info','warning'];
                                     <h6 class="mt-0 header-title">Course Classes</h6>
 
                                     <ul class="list-unstyled activity-widget">
-                                        <li class="activity-list">
-                                            <div class="media">
-                                                <div class="text-center mr-3">
-                                                    <div class="avatar-sm">
-                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary">09</span>
+                                        <?php foreach ($course_materials as $index => $material): ?>
+                                            <li class="activity-list">
+                                                <div class="media">
+                                                    <div class="text-center mr-3">
+                                                        <div class="avatar-sm">
+                                                            <span class="avatar-title rounded-circle bg-soft-<?php echo $colors[rand(0,count($colors) -1)] ?> text-primary"><?php echo $index+1 ?></span>
+                                                        </div>
+                                                        <!-- <p class="text-muted font-size-13 mb-0"><?php echo $material['duration'] ?></p> -->
                                                     </div>
-                                                    <p class="text-muted font-size-13 mb-0">Jan</p>
+                                                    <div class="media-body overflow-hidden">
+                                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
+                                                            class="text-dark"><?php echo $material['title'] ?></a>
+                                                        </h5>
+                                                        <p class="text-muted font-size-13 text-truncate mb-0"><?php echo $material['duration'] ?></p>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body overflow-hidden">
-                                                    <h5 class="font-size-15 mt-2 mb-1"><a href="#"
-                                                        class="text-dark">Bryan</a>
-                                                    </h5>
-                                                    <p class="text-muted font-size-13 text-truncate mb-0">Neque
-                                                    porro quisquam est</p>
-                                                </div>
-                                            </div>
 
-                                        </li>
+                                            </li>
+                                        <?php endforeach ?>
                                     </ul>
-                                    
+
                                 </div>
                             </div>
                         </div>

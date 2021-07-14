@@ -41,14 +41,15 @@
 
         ###### course's students
         function fetch_course_students($id){
-            return DB::fetchAll("SELECT *,course_courses.id FROM courses
-            JOIN courses on courses.id = course_courses.course_id
-            WHERE course_courses.course_id = ?
-            ORDER BY course_courses.id DESC ",[$course_id]);
+            return DB::fetchAll("SELECT *,student_courses.id FROM student_courses
+            JOIN courses on courses.id = student_courses.course_id
+            JOIN students on students.id = student_courses.course_id
+            WHERE student_courses.course_id = ?
+            ORDER BY student_courses.id DESC ",[$course_id]);
         }
 
-        function course_courses_num($course_id){
-            return DB::num_row("SELECT course_courses.id FROM courses WHERE course_courses.course_id = ? ",[$course_id]);
+        function student_courses_num($course_id){
+            return DB::num_row("SELECT id FROM student_courses WHERE course_id = ? ",[$course_id]);
         }
     }
 ?>

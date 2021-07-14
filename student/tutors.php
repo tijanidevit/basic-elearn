@@ -6,6 +6,7 @@ if (!isset($_SESSION['elearn_student'])) {
 }
 $student_id = $_SESSION['elearn_student']['id'];
 include_once '../core/tutors.class.php';
+include_once '../core/core.function.php';
 $tutor_obj = new tutors();
 
 $tutors = $tutor_obj->fetch_tutors();
@@ -60,25 +61,24 @@ $tutors = $tutor_obj->fetch_tutors();
                                                             <img src="../uploads/tutors/<?php echo $tutor['image'] ?>"
                                                             class="avatar-lg rounded-circle mr-2" alt="shreyu">
                                                             <div class="media-body">
-                                                                <h5 class="mt-2 mb-0"><?php echo $tutor['fullname'] ?></h5>
+                                                                <h5 class="mt-2 mb-0"><a href="tutor?id=<?php echo $tutor['id'] ?>"><?php echo $tutor['fullname'] ?></a></h5>
                                                                 <h6 class="text-muted font-weight-normal mt-1 mb-4"><?php echo $tutor['email'] ?></h6>
                                                             </div>
                                                         </div>
 
                                                         <div class="mt-2 mb-3 row justify-content-between">
                                                             <div class="col-sm-7">
-                                                                <span class="font-size-10"><i class='uil uil-calendar-alt'></i> 40 Days
-                                                                Ago</span>
+                                                                <span class="font-size-10"><i class='uil uil-calendar-alt'></i> <?php echo format_date($tutor['created_at']) ?></span>
                                                             </div>
                                                             <div class="col-sm mt-2 mt-sm-0">
-                                                                <span class="font-size-15"><i class='uil uil-book-alt'></i>12,001</span>
+                                                                <span class="font-size-15"><i class='uil uil-book-alt'></i><?php echo $tutor_obj->tutor_courses_num($tutor['id']) ?></span>
                                                             </div>
                                                         </div>
 
-                                                        <div class="mt-1 pt-2 border-top text-left">
+                                                        <!-- <div class="mt-1 pt-2 border-top text-left">
                                                             <p class="text-muted mb-2">Hi I'm Shreyu. I am foodie and love to eat different
                                                             cuisine!</p>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </div>

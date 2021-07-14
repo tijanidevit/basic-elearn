@@ -29,7 +29,7 @@
 		if ($date =="" || $date == null) {
 			return "";
 		}
-		return date('F d, Y h:mA', strtotime($date));
+		return date('F d, Y', strtotime($date));
 	}
 
 	function set_flash($title,$description){

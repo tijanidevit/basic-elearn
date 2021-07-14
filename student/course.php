@@ -12,7 +12,9 @@ $id = $_GET['id'];
 
 $student_id = $_SESSION['elearn_student']['id'];
 include_once '../core/courses.class.php';
+include_once '../core/students.class.php';
 include_once '../core/core.function.php';
+$student_obj = new students();
 $course_obj = new courses();
 
 $course = $course_obj->fetch_course($id);
@@ -61,7 +63,6 @@ $colors = ['primary','success','danger','info','warning'];
                                     <h4 class="mb-1 mt-0 header-title"><?php echo $course['course_title'] ?></h4>
                                     <p class="mb-3 mt-0">Keep Learning <?php echo $course['course_title'] ?></p>
 
-                                    <?php display_flash('success'); display_flash('error') ?>
 
                                     <div class="text-muted mt-3">
                                         <p><?php echo $course['course_description'] ?></p>
@@ -130,7 +131,13 @@ $colors = ['primary','success','danger','info','warning'];
                                             </li>
                                         <?php endforeach ?>
                                     </ul>
-
+                                    <div>
+                                        <?php if ($student_obj->check_student_course($student_id,$id) > 0): ?>
+                                            <a class="btn btn-block btn-primary" href="course-class?id=<?php echo $id ?>">Go to course</a>
+                                        <?php else: ?>
+                                            <a class="btn btn-block btn-primary" href="enroll?id=<?php echo $id ?>">Enroll course</a>
+                                        <?php endif ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

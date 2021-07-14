@@ -51,6 +51,7 @@ $colors = ['primary','success','danger','info','warning'];
                     <div class="row page-title align-items-center">
                         <div class="col-sm-4 col-xl-6">
                             <h4 class="mb-1 mt-0"><?php echo $course['course_title'] ?></h4>
+                            <?php display_flash('error') ?>
                         </div>
                     </div>
 

@@ -124,12 +124,11 @@
                                                 <div class="col-lg-6 col-xl-3 mb-3">
                                                 <!-- Simple card -->
                                                     <div class="card bg-light mb-4 mb-xl-0">
-                                                        <img class="card-img-top img-fluid" src="assets/images/small/img-1.jpg" alt="Card image cap">
+                                                        <img class="card-img-top img-fluid" src="../uploads/course/image/<?php echo $course['course_image'] ?>" alt="Card image cap">
                                                         <div class="card-body">
-                                                            <h5 class="card-title font-size-16">Card title</h5>
-                                                            <p class="card-text text-muted">Some quick example text to build on the card title and make
-                                                                up the bulk of the card's content. With supporting text below as a natural lead-in to additional content.</p>
-                                                            <a href="javascript:void(0);" class="btn btn-primary">Button</a>
+                                                            <h5 class="card-title font-size-16"><?php echo $course['course_title'] ?></h5>
+                                                            <p class="card-text text-muted"><?php echo substr($course['course_image'],0,120) ?>...</p>
+                                                            <a href="course?id=<?php echo $course['id'] ?>" class="text-primary">Go to course</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -150,16 +149,15 @@
                                         <p class="mb-3 mt-0">List of all courses added by tutors</p>
                                         <div class="row p-3">
 
-                                            <?php foreach ($student_courses as $course): ?>
+                                            <?php foreach ($all_courses as $course): ?>
                                                 <div class="col-lg-6 col-xl-3 mb-3">
                                                 <!-- Simple card -->
                                                     <div class="card bg-light mb-4 mb-xl-0">
-                                                        <img class="card-img-top img-fluid" src="assets/images/small/img-1.jpg" alt="Card image cap">
+                                                        <img class="card-img-top img-fluid" src="../uploads/course/image/<?php echo $course['course_image'] ?>" alt="Card image cap">
                                                         <div class="card-body">
-                                                            <h5 class="card-title font-size-16">Card title</h5>
-                                                            <p class="card-text text-muted">Some quick example text to build on the card title and make
-                                                                up the bulk of the card's content. With supporting text below as a natural lead-in to additional content.</p>
-                                                            <a href="javascript:void(0);" class="btn btn-primary">Button</a>
+                                                            <h5 class="card-title font-size-16"><?php echo $course['course_title'] ?></h5>
+                                                            <p class="card-text text-muted"><?php echo substr($course['course_image'],0,120) ?>...</p>
+                                                            <a href="course?id=<?php echo $course['id'] ?>" class="btn btn-primary">Enroll course</a>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -42,7 +42,7 @@
                 </a>
                 <ul class="nav-second-level" aria-expanded="false">
                     <li>
-                        <a href="my-course">Enrolled Courses</a>
+                        <a href="my-courses">Enrolled Courses</a>
                     </li>
                     <li>
                         <a href="courses">All Courses</a>

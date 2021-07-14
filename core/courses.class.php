@@ -51,5 +51,16 @@
         function student_courses_num($course_id){
             return DB::num_row("SELECT id FROM student_courses WHERE course_id = ? ",[$course_id]);
         }
+
+        ###### course's materials
+        function fetch_course_materials($course_id){
+            return DB::fetchAll("SELECT * FROM course_materials
+            WHERE course_id = ?
+            ORDER BY id DESC ",[$course_id]);
+        }
+
+        function course_materials_num($course_id){
+            return DB::num_row("SELECT id FROM course_materials WHERE course_id = ? ",[$course_id]);
+        }
     }
 ?>

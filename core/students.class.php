@@ -40,7 +40,8 @@
         ###### student's courses
         function fetch_student_courses($student_id){
             return DB::fetchAll("SELECT *,student_courses.id FROM student_courses
-            JOIN students on students.id = student_courses.student_id
+            JOIN courses on courses.id = student_courses.course_id
+            JOIN tutors on tutors.id = courses.tutor_id
             WHERE student_courses.student_id = ?
             ORDER BY student_courses.id DESC ",[$student_id]);
         }

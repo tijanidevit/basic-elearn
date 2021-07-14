@@ -3,11 +3,11 @@
                     <!-- LOGO -->
                     <a href="/" class="navbar-brand mr-0 mr-md-2 logo">
                         <span class="logo-lg">
-                            <img src="assets/images/logo.jpeg" alt="" height="24" />
-                            <span class="d-inline h5 ml-1">FPI RIDE</span>
+                            <!-- <img src="assets/images/logo.jpeg" alt="" height="24" /> -->
+                            <span class="d-inline h5 ml-1">Educa</span>
                         </span>
                         <span class="logo-sm">
-                            <img src="assets/images/logo.jpeg" alt="" height="24">
+                            <!-- <img src="assets/images/logo.jpeg" alt="" height="24"> -->
                         </span>
                     </a>
 
@@ -37,10 +37,10 @@
                             <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="false" aria-expanded="false">
                                 <div class="media user-profile ">
-                                    <img src="assets/images/users/avatar-7.jpg" alt="user-image" class="rounded-circle align-self-center" />
+                                    <!-- <img src="assets/images/users/avatar-7.jpg" alt="user-image" class="rounded-circle align-self-center" /> -->
                                     <div class="media-body text-left">
                                         <h6 class="pro-user-name ml-2 my-0">
-                                            <span>FPI RIDe</span>
+                                            <span>Educa</span>
                                             <span class="pro-user-desc text-muted d-block mt-1">Administrator </span>
                                         </h6>
                                     </div>

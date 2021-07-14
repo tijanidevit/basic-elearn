@@ -6,13 +6,13 @@
         function add_course($tutor_id,$course_title,$course_description,$course_image,$course_duration){
             return DB::execute("INSERT INTO courses(tutor_id,course_title,course_description,course_image,course_duration) VALUES(?,?,?,?,?)", [$tutor_id,$course_title,$course_description,$course_image,$course_duration]);
         }        
-        function fetch_courses($order_by){
+        function fetch_courses($order_by = 'ID DESC'){
             return DB::fetchAll("SELECT *,courses.id FROM courses 
             JOIN tutors on tutors.id = courses.tutor_id
             ORDER BY $order_by",[]);
         }
 
-        function fetch_limited_courses($order_by,$limit){
+        function fetch_limited_courses($order_by = 'ID DESC',$limit){
             return DB::fetchAll("SELECT *,courses.id FROM courses 
             JOIN tutors on tutors.id = courses.tutor_id
             ORDER BY $order_by LIMIT $limit",[]);

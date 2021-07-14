@@ -13,6 +13,8 @@
     $students_num = $student_obj->students_num();
     $courses_num = $course_obj->courses_num();
 
+    $all_courses = $course_obj->fetch_courses();
+
     $student_courses = $student_obj->fetch_student_courses($student_id);
     $student_courses_num = $student_obj->student_courses_num($student_id);
 ?>
@@ -107,56 +109,66 @@
                         </div>
 
                         <!-- stats + charts -->
-                        <div class="row">
-
-                            <div class="col-xl-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-primary btn-sm float-right">
-                                            <i class='uil uil-export ml-1'></i> Enrolled Courses
-                                        </a>
-                                        <h5 class="card-title mt-0 mb-0">List of courses you have enrolled in</h5>
-
-                                        <div class="table-responsive mt-4">
-                                            <table class="table table-hover table-nowrap mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">course</th>
-                                                        <th scope="col">student</th>
-                                                        <th scope="col">students' Phone</th>
-                                                        <th scope="col">Price Per Minute</th>
-                                                        <th scope="col">Code</th>
-                                                        <th scope="col">Booking Date</th>
-                                                        <th scope="col">Start Time</th>
-                                                        <th scope="col">Return Time</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php $sn = 1; foreach ($student_courses as $booking): ?>
-                                                        <tr>
-                                                            <td>#<?php echo $sn ?></td>
-                                                            <td><?php echo $booking['name'] ?></td>
-                                                            <td><?php echo $booking['fullname'] ?></td>
-                                                            <td><?php echo $booking['phone'] ?></td>
-                                                            <td><?php echo $booking['price_per_minute'] ?></td>
-                                                            <td><?php echo $booking['code'] ?> </td>
-                                                            <td><?php echo format_date($booking['created_at']) ?></td>
-                                                            <td><?php echo format_date($booking['start_time']) ?></td>
-                                                            <td><?php echo format_date($booking['start_time']) ?></td>
-                                                        </tr>
-                                                    <?php $sn++; endforeach ?>
-                                                </tbody>
-                                            </table>
-                                        </div> <!-- end table-responsive-->
-                                    </div> <!-- end card-body-->
-                                </div> <!-- end card-->
-                            </div>
-                        </div>
+                        
                         <!-- row -->
 
-                    </div>
-                </div> <!-- content -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mb-1 mt-0 header-title">My Courses</h4>
+                                        <p class="mb-3 mt-0">List of courses you have enrolled in</p>
+                                        <div class="row p-3">
+
+                                            <?php foreach ($student_courses as $course): ?>
+                                                <div class="col-lg-6 col-xl-3 mb-3">
+                                                <!-- Simple card -->
+                                                    <div class="card bg-light mb-4 mb-xl-0">
+                                                        <img class="card-img-top img-fluid" src="assets/images/small/img-1.jpg" alt="Card image cap">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title font-size-16">Card title</h5>
+                                                            <p class="card-text text-muted">Some quick example text to build on the card title and make
+                                                                up the bulk of the card's content. With supporting text below as a natural lead-in to additional content.</p>
+                                                            <a href="javascript:void(0);" class="btn btn-primary">Button</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mb-1 mt-0 header-title">All Courses</h4>
+                                        <p class="mb-3 mt-0">List of all courses added by tutors</p>
+                                        <div class="row p-3">
+
+                                            <?php foreach ($student_courses as $course): ?>
+                                                <div class="col-lg-6 col-xl-3 mb-3">
+                                                <!-- Simple card -->
+                                                    <div class="card bg-light mb-4 mb-xl-0">
+                                                        <img class="card-img-top img-fluid" src="assets/images/small/img-1.jpg" alt="Card image cap">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title font-size-16">Card title</h5>
+                                                            <p class="card-text text-muted">Some quick example text to build on the card title and make
+                                                                up the bulk of the card's content. With supporting text below as a natural lead-in to additional content.</p>
+                                                            <a href="javascript:void(0);" class="btn btn-primary">Button</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                 
 

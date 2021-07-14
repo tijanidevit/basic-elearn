@@ -1,4 +1,11 @@
-,<!DOCTYPE html>
+<?php 
+    session_start();
+    if (isset($_SESSION['elearn_student'])) {
+        header('location: dashboard');
+        exit();
+    }
+?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />

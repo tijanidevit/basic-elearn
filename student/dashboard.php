@@ -1,25 +1,25 @@
 <?php 
-session_start();
-if (!isset($_SESSION['bike_admin'])) {
-    header('location: ./');
-    exit();
-}
+    session_start();
+    if (isset($_SESSION['elearn_student'])) {
+        header('location: dashboard');
+        exit();
+    }
 
-include_once '../core/users.class.php';
-include_once '../core/bikes.class.php';
-include_once '../core/bookings.class.php';
-include_once '../core/core.function.php';
-$user_obj = new Users();
-$bike_obj = new Bikes();
-$booking_obj = new Bookings();
+    include_once '../core/users.class.php';
+    include_once '../core/bikes.class.php';
+    include_once '../core/bookings.class.php';
+    include_once '../core/core.function.php';
+    $user_obj = new Users();
+    $bike_obj = new Bikes();
+    $booking_obj = new Bookings();
 
-$users_num = $user_obj->users_num();
-$bikes_num = $bike_obj->bikes_num();
-$bookings_num = $booking_obj->bookings_num();
+    $users_num = $user_obj->users_num();
+    $bikes_num = $bike_obj->bikes_num();
+    $bookings_num = $booking_obj->bookings_num();
 
-$bikes = $bike_obj->fetch_limited_bikes(10);
-$bookings = $booking_obj->fetch_limited_bookings(10);
-$users = $user_obj->fetch_limited_users(10);
+    $bikes = $bike_obj->fetch_limited_bikes(10);
+    $bookings = $booking_obj->fetch_limited_bookings(10);
+    $users = $user_obj->fetch_limited_users(10);
 ?>
 
 <!DOCTYPE html>

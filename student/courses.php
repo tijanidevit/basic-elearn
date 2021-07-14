@@ -7,6 +7,7 @@
     $student_id = $_SESSION['elearn_student']['id'];
     include_once '../core/students.class.php';
     include_once '../core/courses.class.php';
+    include_once '../core/core.function.php';
     $student_obj = new students();
     $course_obj = new courses();
 
@@ -67,7 +68,10 @@
                                                         <img class="card-img-top img-fluid" src="../uploads/course/image/<?php echo $course['course_image'] ?>" alt="Card image cap">
                                                         <div class="card-body">
                                                             <h5 class="card-title font-size-16"><?php echo $course['course_title'] ?></h5>
-                                                            <p class="card-text text-muted"><?php echo substr($course['course_image'],0,120) ?>...</p>
+                                                            <p class="card-text text-muted"><?php echo substr($course['course_description'],0,120) ?>...</p>
+                                                            <div class="media-body">
+                                                                <h6 class="text-muted font-weight-normal mt-1 mb-4"><i class='uil uil-user'></i> <?php echo $course['fullname'] ?> <i class='uil uil-calendar-alt'></i> <?php echo format_date($course['created_at']) ?></h6>
+                                                            </div>
                                                             <a href="course?id=<?php echo $course['id'] ?>" class="btn btn-primary">Enroll course</a>
                                                         </div>
                                                     </div>

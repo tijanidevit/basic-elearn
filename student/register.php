@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 p-5">
                                         <div class="mx-auto mb-5">
-                                            <a href="index.html">
+                                            <a href="./">
                                                 <img src="../images/logo.png" alt="" height="24" />
                                                 <h3 class="d-inline align-middle ml-1 text-logo">Educa</h3>
                                             </a>
@@ -159,7 +159,7 @@
             },
             success: function(data){
                 if (data == 1) {
-                    location.href = 'users/dashboard';
+                    location.href = 'dashboard';
                 }
                 else{
                     $('#regResult').html(data);

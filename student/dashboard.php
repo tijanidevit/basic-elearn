@@ -6,6 +6,7 @@
     }
     $student_id = $_SESSION['elearn_student']['id'];
     include_once '../core/students.class.php';
+    include_once '../core/core.function.php';
     include_once '../core/courses.class.php';
     $student_obj = new students();
     $course_obj = new courses();
@@ -127,8 +128,14 @@
                                                         <img class="card-img-top img-fluid" src="../uploads/course/image/<?php echo $course['course_image'] ?>" alt="Card image cap">
                                                         <div class="card-body">
                                                             <h5 class="card-title font-size-16"><?php echo $course['course_title'] ?></h5>
-                                                            <p class="card-text text-muted"><?php echo substr($course['course_image'],0,120) ?>...</p>
-                                                            <a href="course?id=<?php echo $course['id'] ?>" class="text-primary">Go to course</a>
+                                                            <p class="card-text text-muted"><?php echo substr($course['course_description'],0,120) ?>...</p>
+                                                            <div class="media-body">
+                                                                <div class="text-muted font-weight-normal mt-1 mb-4">
+                                                                    <div><i class='uil uil-user'></i> <?php echo $course['fullname'] ?></div>
+                                                                    <i class='uil uil-calendar-alt'></i> <?php echo format_date($course['created_at']) ?>
+                                                                </div>
+                                                            </div>
+                                                            <a href="course-class?id=<?php echo $course['id'] ?>" class="text-primary mr-3">Go to course</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -138,7 +145,6 @@
                                 </div>
                             </div>
                         </div>
-
 
 
                         <div class="row">
@@ -156,8 +162,15 @@
                                                         <img class="card-img-top img-fluid" src="../uploads/course/image/<?php echo $course['course_image'] ?>" alt="Card image cap">
                                                         <div class="card-body">
                                                             <h5 class="card-title font-size-16"><?php echo $course['course_title'] ?></h5>
-                                                            <p class="card-text text-muted"><?php echo substr($course['course_image'],0,120) ?>...</p>
-                                                            <a href="course?id=<?php echo $course['id'] ?>" class="btn btn-primary">Enroll course</a>
+                                                            <p class="card-text text-muted"><?php echo substr($course['course_description'],0,120) ?>...</p>
+                                                            <div class="media-body">
+                                                                <div class="text-muted font-weight-normal mt-1 mb-4">
+                                                                    <div><i class='uil uil-user'></i> <?php echo $course['fullname'] ?></div>
+                                                                    <i class='uil uil-calendar-alt'></i> <?php echo format_date($course['created_at']) ?>
+                                                                </div>
+                                                            </div>
+                                                            <a href="course?id=<?php echo $course['id'] ?>" class="text-primary mr-3">View course</a>
+                                                            <a href="enroll?id=<?php echo $course['id'] ?>" class="text-primary mr-3">Enroll course</a>
                                                         </div>
                                                     </div>
                                                 </div>

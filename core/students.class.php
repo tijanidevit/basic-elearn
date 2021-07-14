@@ -39,14 +39,14 @@
 
         ###### student's courses
         function fetch_student_courses($student_id){
-            return DB::fetchAll("SELECT *,student_courses.id FROM courses
+            return DB::fetchAll("SELECT *,student_courses.id FROM student_courses
             JOIN students on students.id = student_courses.student_id
             WHERE student_courses.student_id = ?
             ORDER BY student_courses.id DESC ",[$student_id]);
         }
 
         function student_courses_num($student_id){
-            return DB::num_row("SELECT student_courses.id FROM courses WHERE student_courses.student_id = ? ",[$student_id]);
+            return DB::num_row("SELECT student_courses.id FROM student_courses WHERE student_courses.student_id = ? ",[$student_id]);
         }
     }
 ?>

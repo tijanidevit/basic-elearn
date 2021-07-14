@@ -1,25 +1,20 @@
 <?php 
     session_start();
-    if (isset($_SESSION['elearn_student'])) {
+    if (!isset($_SESSION['elearn_student'])) {
         header('location: dashboard');
         exit();
     }
+    $student_id = $_SESSION['elearn_student']['id'];
+    include_once '../core/students.class.php';
+    include_once '../core/courses.class.php';
+    $student_obj = new students();
+    $course_obj = new courses();
 
-    include_once '../core/users.class.php';
-    include_once '../core/bikes.class.php';
-    include_once '../core/bookings.class.php';
-    include_once '../core/core.function.php';
-    $user_obj = new Users();
-    $bike_obj = new Bikes();
-    $booking_obj = new Bookings();
+    $students_num = $student_obj->students_num();
+    $courses_num = $course_obj->courses_num();
 
-    $users_num = $user_obj->users_num();
-    $bikes_num = $bike_obj->bikes_num();
-    $bookings_num = $booking_obj->bookings_num();
-
-    $bikes = $bike_obj->fetch_limited_bikes(10);
-    $bookings = $booking_obj->fetch_limited_bookings(10);
-    $users = $user_obj->fetch_limited_users(10);
+    $student_courses = $student_obj->fetch_student_courses($student_id);
+    $student_courses_num = $student_obj->student_courses_num($student_id);
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +56,8 @@
                                         <div class="media p-3">
                                             <div class="media-body">
                                                 <span class="text-muted text-uppercase font-size-12 font-weight-bold">
-                                                 All users</span>
-                                                <h2 class="mb-0"><?php echo $users_num ?></h2>
+                                                 All students</span>
+                                                <h2 class="mb-0"><?php echo $students_num ?></h2>
                                             </div>
                                             <div class="align-self-center">
                                                 <div id="today-revenue-chart" class="apex-charts"></div>
@@ -79,8 +74,8 @@
                                     <div class="card-body p-0">
                                         <div class="media p-3">
                                             <div class="media-body">
-                                                <span class="text-muted text-uppercase font-size-12 font-weight-bold">All bikes</span>
-                                                <h2 class="mb-0"><?php echo $bikes_num ?></h2>
+                                                <span class="text-muted text-uppercase font-size-12 font-weight-bold">All courses</span>
+                                                <h2 class="mb-0"><?php echo $courses_num ?></h2>
                                             </div>
                                             <div class="align-self-center">
                                                 <div id="today-product-sold-chart" class="apex-charts"></div>
@@ -97,8 +92,8 @@
                                     <div class="card-body p-0">
                                         <div class="media p-3">
                                             <div class="media-body">
-                                                <span class="text-muted text-uppercase font-size-12 font-weight-bold">All Bookings</span>
-                                                <h2 class="mb-0"><?php echo $bookings_num ?></h2>
+                                                <span class="text-muted text-uppercase font-size-12 font-weight-bold">My Courses</span>
+                                                <h2 class="mb-0"><?php echo $student_courses_num ?></h2>
                                             </div>
                                             <div class="align-self-center">
                                                 <div id="today-new-customer-chart" class="apex-charts"></div>
@@ -118,18 +113,18 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <a href="#" class="btn btn-primary btn-sm float-right">
-                                            <i class='uil uil-export ml-1'></i> Bookings
+                                            <i class='uil uil-export ml-1'></i> Enrolled Courses
                                         </a>
-                                        <h5 class="card-title mt-0 mb-0">List of Recent Bookings</h5>
+                                        <h5 class="card-title mt-0 mb-0">List of courses you have enrolled in</h5>
 
                                         <div class="table-responsive mt-4">
                                             <table class="table table-hover table-nowrap mb-0">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
-                                                        <th scope="col">Bike</th>
-                                                        <th scope="col">User</th>
-                                                        <th scope="col">Users' Phone</th>
+                                                        <th scope="col">course</th>
+                                                        <th scope="col">student</th>
+                                                        <th scope="col">students' Phone</th>
                                                         <th scope="col">Price Per Minute</th>
                                                         <th scope="col">Code</th>
                                                         <th scope="col">Booking Date</th>
@@ -138,7 +133,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php $sn = 1; foreach ($bookings as $booking): ?>
+                                                    <?php $sn = 1; foreach ($student_courses as $booking): ?>
                                                         <tr>
                                                             <td>#<?php echo $sn ?></td>
                                                             <td><?php echo $booking['name'] ?></td>

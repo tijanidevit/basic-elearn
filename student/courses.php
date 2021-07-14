@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if (!isset($_SESSION['elearn_student'])) {
-        header('location: dashboard');
+        header('location: ../');
         exit();
     }
     $student_id = $_SESSION['elearn_student']['id'];

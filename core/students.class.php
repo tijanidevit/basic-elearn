@@ -45,8 +45,17 @@
             ORDER BY student_courses.id DESC ",[$student_id]);
         }
 
+
+        function add_student_courses($student_id,$course_id){
+            return DB::execute("INSERT INTO student_courses(student_id,course_id) VALUES(?,?) ",[$student_id,$course_id]);
+        }
+
+        function check_student_courses($student_id,$course_id){
+            return DB::num_row("SELECT id FROM student_courses WHERE student_id = ? AND course_id = ? ",[$student_id,$course_id]);
+        }
+
         function student_courses_num($student_id){
-            return DB::num_row("SELECT student_courses.id FROM student_courses WHERE student_courses.student_id = ? ",[$student_id]);
+            return DB::num_row("SELECT id FROM student_courses WHERE student_id = ? ",[$student_id]);
         }
     }
 ?>

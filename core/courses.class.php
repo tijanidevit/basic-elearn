@@ -21,7 +21,7 @@
         function fetch_course($id){
             return DB::fetch("SELECT *,courses.id FROM courses 
             JOIN tutors on tutors.id = courses.tutor_id
-            WHERE courses.id = ? OR id = ?",[$id] );
+            WHERE courses.id = ?",[$id] );
         }
 
         function fetch_course_rating($id){

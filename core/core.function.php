@@ -37,8 +37,10 @@
 	}
 
 	function display_flash($title){
-		echo $_SESSION[$title];
-		unset($_SESSION[$title]);
+		if (isset($_SESSION[$title])) {
+			echo $_SESSION[$title];
+			unset($_SESSION[$title]);
+		}
 	}
 
 	function redirect($link){

@@ -45,7 +45,7 @@ $course = $course_obj->fetch_course($id);
                 <div class="container-fluid">
                     <div class="row page-title align-items-center">
                         <div class="col-sm-4 col-xl-6">
-                            <h4 class="mb-1 mt-0">My Courses</h4>
+                            <h4 class="mb-1 mt-0"><?php echo $course['course_title'] ?></h4>
                         </div>
                     </div>
 
@@ -55,8 +55,10 @@ $course = $course_obj->fetch_course($id);
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="mb-1 mt-0 header-title">My Courses</h4>
-                                    <p class="mb-3 mt-0">List of courses you have enrolled in</p>
+                                    <h4 class="mb-1 mt-0 header-title"><?php echo $course['course_title'] ?></h4>
+                                    <p class="mb-3 mt-0">Keep Learning <?php echo $course['course_title'] ?></p>
+                                    
+                                        <?php display_flash('success'); display_flash('error') ?>
                                     <div class="row p-3">
 
                                         <?php foreach ($student_courses as $course): ?>

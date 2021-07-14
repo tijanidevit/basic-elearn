@@ -72,7 +72,7 @@ $colors = ['primary','success','danger','info','warning'];
                                                         <!-- <p class="text-muted font-size-13 mb-0"><?php echo $material['duration'] ?></p> -->
                                                     </div>
                                                     <div class="media-body overflow-hidden">
-                                                        <h5 class="font-size-15 mt-2 mb-1"><a href="#"
+                                                        <h5 class="font-size-15 mt-2 mb-1"><a onclick="renderVideo('../uploads/course/material/<?php echo $material['material'] ?>','<?php echo $material['transcript'] ?>')" href="#"
                                                             class="text-dark"><?php echo $material['title'] ?></a>
                                                         </h5>
                                                         <p class="text-muted font-size-13 text-truncate mb-0"><?php echo $material['duration'] ?></p>
@@ -84,24 +84,24 @@ $colors = ['primary','success','danger','info','warning'];
                                     </ul>
 
                                     <div class="tags">
-                                            <h6 class="font-weight-bold">Details</h6>
-                                        </div>
+                                        <h6 class="font-weight-bold">Details</h6>
+                                    </div>
 
-                                        <div class="row">
+                                    <div class="row">
 
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="mb-2"><i class="uil-user text-danger"></i> Tutor </p>
-                                                    <div class="font-size-15"><a href="tutor?id=<?php echo $course['tutor_id'] ?>"><?php echo $course['fullname'] ?></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <p class="mb-2"><i class="uil-stopwatch text-danger"></i> Duration</p>
-                                                    <div class="font-size-15 ml-1"><?php echo $course['course_duration'] ?></div>
-                                                </div>
+                                        <div class="col-6">
+                                            <div>
+                                                <p class="mb-2"><i class="uil-user text-danger"></i> Tutor </p>
+                                                <div class="font-size-15"><a href="tutor?id=<?php echo $course['tutor_id'] ?>"><?php echo $course['fullname'] ?></a></div>
                                             </div>
                                         </div>
+                                        <div class="col-6">
+                                            <div>
+                                                <p class="mb-2"><i class="uil-stopwatch text-danger"></i> Duration</p>
+                                                <div class="font-size-15 ml-1"><?php echo $course['course_duration'] ?></div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -110,12 +110,16 @@ $colors = ['primary','success','danger','info','warning'];
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-body">
-
-                                    <div class="text-muted mt-3">
-                                        <p><?php echo $course['course_description'] ?></p>
-
-                                        
-
+                                    <video width="100%" height="500" class="d-none d-md-block" controls>
+                                        <source src="../uploads/course/material/<?php echo $course_materials[0]['material']?>" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <video width="100%" class="d-md-none" controls>
+                                        <source src="../uploads/course/material/<?php echo $course_materials[0]['material']?>" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="text-muted mt-3" id="transcript">
+                                        <p><?php echo $course_materials[0]['transcript'] ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -143,3 +147,14 @@ $colors = ['primary','success','danger','info','warning'];
 
 </body>
 </html>
+
+
+<script>
+    function renderVideo(link,transcript){
+        $('source').attr('src',link);
+        $('video')[0].load();
+        $('video')[1].load();
+
+        $('#transcript').text(transcript);
+    }
+</script>

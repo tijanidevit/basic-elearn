@@ -56,7 +56,7 @@
         function fetch_course_materials($course_id){
             return DB::fetchAll("SELECT * FROM course_materials
             WHERE course_id = ?
-            ORDER BY id DESC ",[$course_id]);
+            ORDER BY id ",[$course_id]);
         }
 
         function course_materials_num($course_id){

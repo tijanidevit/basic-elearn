@@ -39,7 +39,7 @@
                                         <p class="text-muted mt-0 mb-4">Create a free account and start learning</p>
 
                                         <form method="post" id="regForm" class="authentication-form">
-                                            <div id="result" style="display: none;"></div>
+                                            <div id="regResult" style="display: none;"></div>
                                             <div class="form-group">
                                                 <label class="form-control-label">Name</label>
                                                 <div class="input-group input-group-merge">

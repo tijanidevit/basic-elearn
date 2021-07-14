@@ -7,19 +7,19 @@
             return DB::execute("INSERT INTO courses(tutor_id,course_title,course_description,course_image,course_duration) VALUES(?,?,?,?,?)", [$tutor_id,$course_title,$course_description,$course_image,$course_duration]);
         }        
         function fetch_courses($order_by){
-            return DB::fetchAll("SELECT * FROM courses 
+            return DB::fetchAll("SELECT *,courses.id FROM courses 
             JOIN tutors on tutors.id = courses.tutor_id
             ORDER BY $order_by",[]);
         }
 
         function fetch_limited_courses($order_by,$limit){
-            return DB::fetchAll("SELECT * FROM courses 
+            return DB::fetchAll("SELECT *,courses.id FROM courses 
             JOIN tutors on tutors.id = courses.tutor_id
             ORDER BY $order_by LIMIT $limit",[]);
         }
 
         function fetch_course($id){
-            return DB::fetch("SELECT * FROM courses 
+            return DB::fetch("SELECT *,courses.id FROM courses 
             JOIN tutors on tutors.id = courses.tutor_id
             WHERE id = ? OR id = ?",[$id] );
         }
@@ -39,8 +39,8 @@
             return DB::num_row("SELECT id FROM courses WHERE tutor_id = ? AND course_title = ? ", [$tutor_id,$course_title]);
         }
 
-        ###### course's courses
-        function fetch_course_courses($course_id){
+        ###### course's students
+        function fetch_course_students($id){
             return DB::fetchAll("SELECT *,course_courses.id FROM courses
             JOIN courses on courses.id = course_courses.course_id
             WHERE course_courses.course_id = ?

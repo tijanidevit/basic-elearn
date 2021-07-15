@@ -6,11 +6,13 @@ if (!isset($_SESSION['elearn_student'])) {
 }
 $student_id = $_SESSION['elearn_student']['id'];
 include_once '../core/tutors.class.php';
+include_once '../core/courses.class.php';
 include_once '../core/core.function.php';
+$course_obj = new courses();
 $tutor_obj = new tutors();
 
 $id = $_GET['id'];
-$tutors = $tutor_obj->fetch_tutor($id);
+$tutor = $tutor_obj->fetch_tutor($id);
 $tutor_courses = $tutor_obj->fetch_tutor_courses($id);
 ?>
 
@@ -41,18 +43,37 @@ $tutor_courses = $tutor_obj->fetch_tutor_courses($id);
                 <div class="container-fluid">
                     <div class="row page-title align-items-center">
                         <div class="col-sm-4 col-xl-6">
-                            <h4 class="mb-1 mt-0">Tutors</h4>
+                            <h4 class="mb-1 mt-0">Tutor - <?php echo $tutor['fullname'] ?></h4>
                         </div>
                     </div>
 
                     <!-- row -->
+                    <div class="row">
+                        <div class="col-md-12 col-xl-12">
+                            <div class="card">
+                                <div class="card-body pb-0">
+                                    <div class="text-center mt-3">
+                                        <img src="../uploads/tutors/<?php echo $tutor['image'] ?>" alt="" class="avatar-xl rounded-circle">
+                                        <h5 class="mt-2 mb-0"><?php echo $tutor['fullname'] ?></h5>
+                                        <h6 class="text-muted font-weight-normal mt-2 mb-4">
+                                            Experienced Tutor
+                                        </h6>
+
+                                        <p class="mb-2">
+                                            <label class="badge badge-soft-success">UI &amp; UX</label>
+                                            <label class="badge badge-soft-success">Frontend Development</label>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="mb-1 mt-0 header-title">Tutors</h4>
-                                    <p class="mb-3 mt-0">List of all registered tutors</p>
+                                    <h4 class="mb-1 mt-0 header-title"><?php echo $tutor['fullname'] ?>'s Courses</h4>
                                     <div class="row p-3">
 
                                         <?php foreach ($tutor_courses as $course): ?>

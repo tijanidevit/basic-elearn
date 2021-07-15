@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	unset($_SESSION['bike_admin']);
+	unset($_SESSION['elearn_student']);
 
 	header('location: ./');
 ?>

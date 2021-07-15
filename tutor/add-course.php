@@ -41,6 +41,7 @@ if (!isset($_SESSION['elearn_tutor'])) {
                                 <div class="card-body">
                                     <h4 class="mb-1 mt-0 header-title">Enter Course Details</h4>
 
+                                    <div id="result"></div>
 
                                     <div class="text-muted mt-3">
                                         <form id="courseForm"  enctype="multipart/form-data">
@@ -64,7 +65,7 @@ if (!isset($_SESSION['elearn_tutor'])) {
                                                 <label class="font-weight-bold">Course Description</label>
                                                 <textarea style="resize: none;" rows="5" name="course_description" required class="form-control"></textarea>
                                             </div>
-
+                                            
                                             <div class="form-group">
                                                 <button class="btn btn-info">
                                                     <i class="icon-rocket"></i>

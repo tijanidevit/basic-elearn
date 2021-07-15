@@ -45,7 +45,7 @@
                         <a href="my-courses">My Courses</a>
                     </li>
                     <li>
-                        <a href="add-course">Add Courses</a>
+                        <a href="add-course">Add Course</a>
                     </li>
                 </ul>
             </li>

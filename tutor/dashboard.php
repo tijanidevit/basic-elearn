@@ -131,8 +131,8 @@
                                                             <p class="card-text text-muted"><?php echo substr($course['course_description'],0,120) ?>...</p>
                                                             <div class="media-body">
                                                                 <div class="text-muted font-weight-normal mt-1 mb-4">
-                                                                    <div><i class='uil uil-users-alt'></i> <?php echo $course_obj->student_courses_num($course['id']) ?></div>
-                                                                    <i class='uil uil-calendar-alt'></i> <?php echo format_date($course['created_at']) ?>
+                                                                    <i class='uil uil-users-alt'></i> <?php echo $course_obj->student_courses_num($course['id']) ?>
+                                                                    <i class='uil uil-calendar-alt ml-4'></i> <?php echo format_date($course['created_at']) ?>
                                                                 </div>
                                                             </div>
                                                             <a href="course-class?id=<?php echo $course['id'] ?>" class="text-primary mr-3">View course</a>

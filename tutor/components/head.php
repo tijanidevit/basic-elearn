@@ -1,5 +1,5 @@
 <meta charset="utf-8" />
-<title><?php echo $_SESSION['elearn_student']['fullname'] ?> - Educa</title>
+<title><?php echo $_SESSION['elearn_tutor']['fullname'] ?> - Educa</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="" name="description" />
 <meta content="Coderthemes" name="author" />

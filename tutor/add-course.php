@@ -66,7 +66,17 @@ if (!isset($_SESSION['elearn_tutor'])) {
                                             </div>
 
                                             <div class="form-group">
-                                                <button class="btn btn-info">Submit</button>
+                                                <button class="btn btn-info">
+                                                    <i class="icon-rocket"></i>
+                                                    <span class="spinner" style="display: none;">
+                                                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                                    </span>
+                                                    <span class="btnText">
+                                                        Submit
+                                                    </span>
+                                                </button>
                                             </div>
 
                                         </form>
@@ -95,3 +105,34 @@ if (!isset($_SESSION['elearn_tutor'])) {
 
 </body>
 </html>
+
+
+<script>
+    $('#courseForm').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            url:'ajax/add_course.php',
+            type: 'POST',
+            data : new FormData(this),
+            contentType: false,
+            processData: false,
+            cache: false,
+            beforeSend: function() {
+                $('.spinner').show();
+                $('.btnText').hide();
+            },
+            success: function(data){
+
+                $('.spinner').hide();
+                $('.btnText').show();
+                
+                $('#result').html(data);
+                $('#result').fadeIn();
+
+                if (data.includes('successfully')) {
+                    $('input').val('');
+                }
+            }
+        })
+    });
+</script>

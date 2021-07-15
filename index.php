@@ -62,6 +62,7 @@
 								<li class="nav-item">
 									<a class="bg-success p-2 nav-lin text-white" href="student/register">Register</a>
 									<a class="bg-info p-2 nav-lin text-white" href="student/login">Login</a>
+									<a class="btnText p-2 nav-lin text-white" href="tutor/login">Tutor</a>
 								</li>
 							</ul>
 						</div>

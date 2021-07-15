@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (!isset($_SESSION['elearn_student'])) {
+if (!isset($_SESSION['elearn_tutor'])) {
     header('location: ../');
     exit();
 }
@@ -10,11 +10,11 @@ if (!isset($_GET['id'])) {
 }
 $id = $_GET['id'];
 
-$student_id = $_SESSION['elearn_student']['id'];
+$tutor_id = $_SESSION['elearn_tutor']['id'];
 include_once '../core/courses.class.php';
-include_once '../core/students.class.php';
+include_once '../core/tutors.class.php';
 include_once '../core/core.function.php';
-$student_obj = new students();
+$tutor_obj = new tutors();
 $course_obj = new courses();
 
 $course = $course_obj->fetch_course($id);
@@ -83,7 +83,7 @@ $colors = ['primary','success','danger','info','warning'];
 
                                             <div class="col-lg-3 col-md-6">
                                                 <div>
-                                                    <p class="mb-2"><i class="uil-users-alt text-danger"></i> Enrolled Students </p>
+                                                    <p class="mb-2"><i class="uil-users-alt text-danger"></i> Enrolled tutors </p>
                                                     <h5 class="font-size-15 text-center"><?php echo $course_obj->student_courses_num($course['id']) ?></h5>
                                                 </div>
                                             </div>
@@ -133,11 +133,7 @@ $colors = ['primary','success','danger','info','warning'];
                                         <?php endforeach ?>
                                     </ul>
                                     <div>
-                                        <?php if ($student_obj->check_student_course($student_id,$id) > 0): ?>
-                                            <a class="btn btn-block btn-primary" href="course-class?id=<?php echo $id ?>">Go to course</a>
-                                        <?php else: ?>
-                                            <a class="btn btn-block btn-primary" href="enroll?id=<?php echo $id ?>">Enroll course</a>
-                                        <?php endif ?>
+                                        <a class="btn btn-block btn-primary" href="course-class?id=<?php echo $id ?>">Course Materials</a>
                                     </div>
                                 </div>
                             </div>

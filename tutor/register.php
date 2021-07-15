@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if (isset($_SESSION['elearn_student'])) {
+    if (isset($_SESSION['elearn_tutor'])) {
         header('location: dashboard');
         exit();
     }
@@ -43,7 +43,7 @@
                                         </div>
 
                                         <h6 class="h5 mb-0 mt-4">Create your account</h6>
-                                        <p class="text-muted mt-0 mb-4">Create a free account and start learning</p>
+                                        <p class="text-muted mt-0 mb-4">Create a free account and start teaching</p>
 
                                         <form method="post" id="regForm" class="authentication-form">
                                             <div id="regResult" style="display: none;"></div>

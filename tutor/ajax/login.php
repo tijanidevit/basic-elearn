@@ -1,23 +1,23 @@
 <?php 
 	include_once '../../core/session.class.php';
-	include_once '../../core/students.class.php';
+	include_once '../../core/tutors.class.php';
 	include_once '../../core/core.function.php';
 	echo register();
 	function register()
 	{
 		$session = new Session();
-		$student_obj = new Students();
+		$tutor_obj = new tutors();
 		if (isset($_POST['email'])) {
 			$email = $_POST['email'];
 			$password = md5($_POST['password']);
 
 
-			if (! $student_obj->check_email($email)) {
+			if (! $tutor_obj->check_email($email)) {
 				return displayWarning('Email address not found!');
 			}
-			if ($student_obj->student_login($email,$password)) {
-				$student = $student_obj->fetch_student($email);
-				$session->create_session('elearn_student',$student);
+			if ($tutor_obj->tutor_login($email,$password)) {
+				$tutor = $tutor_obj->fetch_tutor($email);
+				$session->create_session('elearn_tutor',$tutor);
 				return 1;
 			}
 			else{

@@ -134,7 +134,8 @@
                                                                     <i class='uil uil-calendar-alt ml-4'></i> <?php echo format_date($course['created_at']) ?>
                                                                 </div>
                                                             </div>
-                                                            <a href="course-class?id=<?php echo $course['id'] ?>" class="text-primary mr-3">View course</a>
+                                                            <a href="course?id=<?php echo $course['id'] ?>" class="text-primary mr-3">View course</a>
+                                                            <a href="course-class?id=<?php echo $course['id'] ?>" class="text-primary mr-3">Course Materials</a>
                                                         </div>
                                                     </div>
                                                 </div>

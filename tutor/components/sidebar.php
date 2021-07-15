@@ -5,7 +5,7 @@
 
         <div class="media-body">
             <h6 class="pro-user-name mt-0 mb-0">Educa</h6>
-            <span class="pro-user-desc"><?php echo $_SESSION['elearn_student']['fullname'] ?></span>
+            <span class="pro-user-desc"><?php echo $_SESSION['elearn_tutor']['fullname'] ?></span>
         </div>
         <div class="dropdown align-self-center profile-dropdown-menu">
             <a class="dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"

@@ -43,7 +43,7 @@ if (!isset($_SESSION['elearn_tutor'])) {
 
 
                                     <div class="text-muted mt-3">
-                                        <form id="courseForm">
+                                        <form id="courseForm"  enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="font-weight-bold">Course Title</label>
                                                 <input type="text" name="course_title" required class="form-control">

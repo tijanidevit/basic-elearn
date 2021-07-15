@@ -9,7 +9,9 @@ include_once '../core/tutors.class.php';
 include_once '../core/core.function.php';
 $tutor_obj = new tutors();
 
-$tutors = $tutor_obj->fetch_tutors();
+$id = $_GET['id'];
+$tutors = $tutor_obj->fetch_tutor($id);
+$tutor_courses = $tutor_obj->fetch_tutor_courses($id);
 ?>
 
 <!DOCTYPE html>
@@ -53,16 +55,16 @@ $tutors = $tutor_obj->fetch_tutors();
                                     <p class="mb-3 mt-0">List of all registered tutors</p>
                                     <div class="row p-3">
 
-                                        <?php foreach ($tutors as $tutor): ?>
+                                        <?php foreach ($tutor_courses as $course): ?>
                                             <div class="col-md-6 col-xl-3">
                                                 <div class="card bg-light">
                                                     <div class="card-body">
                                                         <div class="media">
-                                                            <img src="../uploads/tutors/<?php echo $tutor['image'] ?>"
+                                                            <img src="../uploads/course/image/<?php echo $course['course_image'] ?>"
                                                             class="avatar-lg rounded-circle mr-2" alt="shreyu">
                                                             <div class="media-body">
-                                                                <h5 class="mt-2 mb-0"><a href="tutor?id=<?php echo $tutor['id'] ?>"><?php echo $tutor['fullname'] ?></a></h5>
-                                                                <h6 class="text-muted font-weight-normal mt-1 mb-4"><?php echo $tutor['email'] ?></h6>
+                                                                <h5 class="mt-2 mb-0"><a href="course?id=<?php echo $course['id'] ?>"><?php echo $course['course_title'] ?></a></h5>
+                                                                <h6 class="text-muted font-weight-normal mt-1 mb-4"><?php echo $course['email'] ?></h6>
                                                             </div>
                                                         </div>
 

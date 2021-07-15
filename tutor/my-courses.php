@@ -1,15 +1,17 @@
 <?php 
 session_start();
-if (!isset($_SESSION['elearn_student'])) {
+if (!isset($_SESSION['elearn_tutor'])) {
     header('location: ../');
     exit();
 }
-$student_id = $_SESSION['elearn_student']['id'];
-include_once '../core/students.class.php';
+$tutor_id = $_SESSION['elearn_tutor']['id'];
+include_once '../core/tutors.class.php';
+include_once '../core/courses.class.php';
 include_once '../core/core.function.php';
-$student_obj = new students();
+$course_obj = new courses();
+$tutor_obj = new tutors();
 
-$student_courses = $student_obj->fetch_student_courses($student_id);
+$tutor_courses = $tutor_obj->fetch_tutor_courses($tutor_id);
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +32,6 @@ $student_courses = $student_obj->fetch_student_courses($student_id);
         <?php include_once 'components/sidebar.php'; ?>
         <!-- Left Sidebar End -->
 
-        <!-- ============================================================== -->
-        <!-- Start Page Content here -->
-        <!-- ============================================================== -->
-
         <div class="content-page">
             <div class="content">
                 <div class="container-fluid">
@@ -50,10 +48,10 @@ $student_courses = $student_obj->fetch_student_courses($student_id);
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="mb-1 mt-0 header-title">My Courses</h4>
-                                    <p class="mb-3 mt-0">List of courses you have enrolled in</p>
+                                    <p class="mb-3 mt-0">List of courses you have created</p>
                                     <div class="row p-3">
 
-                                        <?php foreach ($student_courses as $course): ?>
+                                        <?php foreach ($tutor_courses as $course): ?>
                                             <div class="col-lg-6 col-xl-3 mb-3">
                                                 <div class="card bg-light mb-4 mb-xl-0">
                                                     <img class="card-img-top img-fluid" src="../uploads/course/image/<?php echo $course['course_image'] ?>" alt="Card image cap">
@@ -62,11 +60,11 @@ $student_courses = $student_obj->fetch_student_courses($student_id);
                                                         <p class="card-text text-muted"><?php echo substr($course['course_description'],0,120) ?>...</p>
                                                         <div class="media-body">
                                                             <div class="text-muted font-weight-normal mt-1 mb-4">
-                                                                <div><i class='uil uil-user'></i> <?php echo $course['fullname'] ?></div>
-                                                                <i class='uil uil-calendar-alt'></i> <?php echo format_date($course['created_at']) ?>
+                                                                <i class='uil uil-users-alt'></i> <?php echo $course_obj->student_courses_num($course['id']) ?>
+                                                                <i class='uil uil-calendar-alt ml-4'></i> <?php echo format_date($course['created_at']) ?>
                                                             </div>
                                                         </div>
-                                                        <a href="course-class?id=<?php echo $course['id'] ?>" class="text-primary mr-3">Go to course</a>
+                                                        <a href="course-class?id=<?php echo $course['id'] ?>" class="text-primary mr-3">View course</a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (!isset($_SESSION['elearn_student'])) {
+if (!isset($_SESSION['elearn_tutor'])) {
     header('location: ../');
     exit();
 }
@@ -10,18 +10,13 @@ if (!isset($_GET['id'])) {
 }
 $id = $_GET['id'];
 
-$student_id = $_SESSION['elearn_student']['id'];
+$tutor_id = $_SESSION['elearn_tutor']['id'];
 include_once '../core/courses.class.php';
-include_once '../core/students.class.php';
+include_once '../core/tutors.class.php';
 include_once '../core/core.function.php';
-$student_obj = new students();
+$tutor_obj = new tutors();
 $course_obj = new courses();
 
-if (!$student_obj->check_student_course($student_id,$id) > 0) {
-    set_flash('error',displayWarning('Please enroll before visiting class'));
-    header('location:course?id='.$id);
-    exit();
-}
 
 $course = $course_obj->fetch_course($id);
 $course_materials = $course_obj->fetch_course_materials($id);

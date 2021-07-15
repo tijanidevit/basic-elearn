@@ -123,7 +123,6 @@
 
                                             <?php foreach ($tutor_courses as $course): ?>
                                                 <div class="col-lg-6 col-xl-3 mb-3">
-                                                <!-- Simple card -->
                                                     <div class="card bg-light mb-4 mb-xl-0">
                                                         <img class="card-img-top img-fluid" src="../uploads/course/image/<?php echo $course['course_image'] ?>" alt="Card image cap">
                                                         <div class="card-body">

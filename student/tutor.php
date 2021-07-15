@@ -56,24 +56,23 @@ $tutor_courses = $tutor_obj->fetch_tutor_courses($id);
                                     <div class="row p-3">
 
                                         <?php foreach ($tutor_courses as $course): ?>
-                                            <div class="col-md-6 col-xl-3">
+                                            <div class="col-md-6 col-xl-4">
                                                 <div class="card bg-light">
                                                     <div class="card-body">
                                                         <div class="media">
-                                                            <img src="../uploads/course/image/<?php echo $course['course_image'] ?>"
-                                                            class="avatar-lg rounded-circle mr-2" alt="shreyu">
+                                                            <img src="../uploads/course/image/<?php echo $course['course_image'] ?>" class="avatar-lg rounded-circle mr-2" alt="shreyu" />
                                                             <div class="media-body">
                                                                 <h5 class="mt-2 mb-0"><a href="course?id=<?php echo $course['id'] ?>"><?php echo $course['course_title'] ?></a></h5>
-                                                                <h6 class="text-muted font-weight-normal mt-1 mb-4"><?php echo $course['email'] ?></h6>
+                                                                <h6 class="text-muted font-weight-normal mt-1 mb-4"><?php echo substr($course['course_description'], 0, 140) ?>...</h6>
                                                             </div>
                                                         </div>
 
                                                         <div class="mt-2 mb-3 row justify-content-between">
                                                             <div class="col-sm-7">
-                                                                <span class="font-size-10"><i class='uil uil-calendar-alt'></i> <?php echo format_date($tutor['created_at']) ?></span>
+                                                                <span class="font-size-10"><i class='uil uil-calendar-alt'></i> <?php echo format_date($course['created_at']) ?></span>
                                                             </div>
                                                             <div class="col-sm mt-2 mt-sm-0">
-                                                                <span class="font-size-15"><i class='uil uil-book-alt'></i><?php echo $tutor_obj->tutor_courses_num($tutor['id']) ?></span>
+                                                                <span class="font-size-15"><i class='uil uil-book-alt'></i><?php echo $course_obj->course_materials_num($course['id']) ?></span>
                                                             </div>
                                                         </div>
 

@@ -38,6 +38,7 @@ $tutor_courses = $tutor_obj->fetch_tutor_courses($tutor_id);
                     <div class="row page-title align-items-center">
                         <div class="col-sm-4 col-xl-6">
                             <h4 class="mb-1 mt-0">My Courses</h4>
+                            <?php echo display_flash('success') ?>
                         </div>
                     </div>
 

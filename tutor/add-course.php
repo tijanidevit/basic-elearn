@@ -131,7 +131,7 @@ if (!isset($_SESSION['elearn_tutor'])) {
                 $('#result').fadeIn();
 
                 if (data.includes('successfully')) {
-                    $('input').val('');
+                    location.href = 'my-courses';
                 }
             }
         })

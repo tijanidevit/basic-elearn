@@ -60,7 +60,7 @@ $course = $course_obj->fetch_course($id);
                                         <form id="courseForm"  enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="font-weight-bold">Course Title</label>
-                                                <input type="text" name="course_title" required class="form-control">
+                                                <input type="text" readonly value="<?php echo $course['course_title'] ?>" required class="form-control">
                                             </div>
 
                                             <div class="form-group">

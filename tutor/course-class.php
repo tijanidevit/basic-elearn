@@ -123,7 +123,9 @@ $colors = ['primary','success','danger','info','warning'];
                                         Your browser does not support the video tag.
                                     </video>
                                     <div class="text-muted mt-3" id="transcript">
-                                        <p><?php echo $course_materials[0]['transcript'] ?></p>
+                                        <?php if (!empty($course_materials)): ?>
+                                            <p><?php echo $course_materials[0]['transcript'] ?></p>
+                                        <?php endif ?>
                                     </div>
                                 </div>
                             </div>

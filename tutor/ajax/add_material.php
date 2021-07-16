@@ -24,7 +24,7 @@
 
 		if ($course_obj->add_course_material($course_id,$title,$material,$transcript,$duration)){
 			set_flash('success',$title.' added successfully');
-			// return displaySuccess($title.' added successfully');
+			return displaySuccess($title.' added successfully');
 		}
 		else{
 			return displayError('Unable to add');

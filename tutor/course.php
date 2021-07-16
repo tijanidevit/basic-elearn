@@ -5,7 +5,7 @@ if (!isset($_SESSION['elearn_tutor'])) {
     exit();
 }
 if (!isset($_GET['id'])) {
-    header('location: my-courses');
+    // header('location: my-courses');
     exit();
 }
 $id = $_GET['id'];

@@ -76,8 +76,8 @@ $course = $course_obj->fetch_course($id);
 
 
                                             <div class="form-group">
-                                                <label class="font-weight-bold">Course Duration</label>
-                                                <input type="text" name="course_duration" required class="form-control">
+                                                <label class="font-weight-bold">Duration</label>
+                                                <input type="text" name="duration" required class="form-control">
                                             </div>
 
                                             <div class="form-group">
@@ -150,8 +150,9 @@ $course = $course_obj->fetch_course($id);
                 $('#result').fadeIn();
 
                 if (data.includes('successfully')) {
-                    location.href = 'course?id='<?php echo $id ?>;
+                    location.href = 'course?id=<?php echo $id ?>';
                 }
+                console.log('sssTTT');
             }
         })
     });

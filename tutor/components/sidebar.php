@@ -50,7 +50,7 @@
                 </ul>
             </li>
 
-            <li>
+            <!-- <li>
                 <a href="javascript: void(0);">
                     <i data-feather="sunrise"></i>
                     <span> Tutors </span>
@@ -61,7 +61,7 @@
                         <a href="tutors">View Tutors</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
 
             <li>

@@ -7,23 +7,24 @@
 	function add_course(){
 		$course_obj = new courses();
 
-		if (!$_POST['course_title'] || $_POST['course_title']=="") {
-			return  displayWarning('course course_title is required and cannot be empty');
+		if (!$_POST['title'] || $_POST['title']=="") {
+			return  displayWarning('Material title is required and cannot be empty');
 		}
 		$tutor_id = $_SESSION['elearn_tutor']['id'];
-		$course_description = $_POST['course_description'];
-		$course_title = $_POST['course_title'];
-		$course_duration = $_POST['course_duration'];
+		$transcript = $_POST['transcript'];
+		$course_id = $_POST['course_id'];
+		$title = $_POST['title'];
+		$duration = $_POST['duration'];
 		
-		if ($course_obj->check_tutor_course($tutor_id,$course_title)) {
-			return  displayWarning('You have already added this course');
-		}
+		// if ($course_obj->check_tutor_course($tutor_id,$course_title)) {
+		// 	return  displayWarning('You have already added this course');
+		// }
 
-		$course_image = upload_file($_FILES['course_image'],'../../uploads/course/image/');
+		$material = upload_file($_FILES['material'],'../../uploads/course/material/');
 
-		if ($course_obj->add_course($tutor_id,$course_title,$course_description,$course_image,$course_duration)){
-			set_flash('success',$course_title.' added successfully');
-			return displaySuccess($course_title.' added successfully');
+		if ($course_obj->add_course_material($course_id,$title,$material,$transcript,$duration)){
+			set_flash('success',$title.' added successfully');
+			return displaySuccess($title.' added successfully');
 		}
 		else{
 			return displayError('Unable to add');

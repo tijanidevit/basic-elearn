@@ -5,7 +5,7 @@ if (!isset($_SESSION['elearn_tutor'])) {
     exit();
 }
 if (!isset($_GET['id'])) {
-    header('location: courses');
+    header('location: my-courses');
     exit();
 }
 $id = $_GET['id'];
@@ -134,7 +134,7 @@ $colors = ['primary','success','danger','info','warning'];
                                     </ul>
                                     <div class="row">
                                         <div class="col-6">
-                                            <a class="btn btn-block btn-primary" href="add-materialid=<?php echo $id ?>">Add Course Materials</a>
+                                            <a class="btn btn-block btn-primary" href="add-material?id=<?php echo $id ?>">Add Course Materials</a>
                                         </div>
                                         <div class="col-6">
                                             <a class="btn btn-block btn-primary" href="course-class?id=<?php echo $id ?>">Course Materials</a>

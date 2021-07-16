@@ -45,7 +45,7 @@ $course = $course_obj->fetch_course($id);
                         </div>
                     </div>
 
-                    <!-- row -->
+                    <!-- row -->    
 
                     <div class="row">
                         <div class="col-lg-2"></div>
@@ -57,15 +57,21 @@ $course = $course_obj->fetch_course($id);
                                     <div id="result"></div>
 
                                     <div class="text-muted mt-3">
-                                        <form id="courseForm"  enctype="multipart/form-data">
+                                        <form id="materialForm"  enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="font-weight-bold">Course Title</label>
                                                 <input type="text" readonly value="<?php echo $course['course_title'] ?>" required class="form-control">
+                                                <input type="hidden" name="course_id" value="<?php echo $id ?>" required class="form-control">
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="font-weight-bold">Course Image</label>
-                                                <input type="file" accept="image/*" name="course_image" required class="form-control">
+                                                <label class="font-weight-bold">Material Title</label>
+                                                <input type="text" name="title" required class="form-control">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">Material</label>
+                                                <input type="file" accept="video/*" name="material" required class="form-control">
                                             </div>
 
 
@@ -75,8 +81,8 @@ $course = $course_obj->fetch_course($id);
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="font-weight-bold">Course Description</label>
-                                                <textarea style="resize: none;" rows="5" name="course_description" required class="form-control"></textarea>
+                                                <label class="font-weight-bold">Transcript</label>
+                                                <textarea style="resize: none;" rows="5" name="transcript" required class="form-control"></textarea>
                                             </div>
                                             
                                             <div class="form-group">
@@ -122,10 +128,10 @@ $course = $course_obj->fetch_course($id);
 
 
 <script>
-    $('#courseForm').submit(function(e) {
+    $('#materialForm').submit(function(e) {
         e.preventDefault();
         $.ajax({
-            url:'ajax/add_course.php',
+            url:'ajax/add_material.php',
             type: 'POST',
             data : new FormData(this),
             contentType: false,
@@ -144,7 +150,7 @@ $course = $course_obj->fetch_course($id);
                 $('#result').fadeIn();
 
                 if (data.includes('successfully')) {
-                    location.href = 'my-courses';
+                    location.href = 'course?id='<?php echo $id ?>;
                 }
             }
         })

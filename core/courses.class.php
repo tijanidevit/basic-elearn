@@ -53,8 +53,8 @@
         }
 
         ###### course's materials
-        function add_course_material($course_id){
-            return DB::num_row("SELECT id FROM course_materials WHERE course_id = ? ",[$course_id]);
+        function add_course_material($course_id,$title,$material,$transcript,$duration){
+            return DB::execute("INSERT INTO course_materials(course_id,title,material,transcript,duration) VALUES (?,?,?,?,?) ",[$course_id,$title,$material,$transcript,$duration]);
         }
 
         function fetch_course_materials($course_id){

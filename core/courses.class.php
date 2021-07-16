@@ -53,6 +53,10 @@
         }
 
         ###### course's materials
+        function add_course_material($course_id){
+            return DB::num_row("SELECT id FROM course_materials WHERE course_id = ? ",[$course_id]);
+        }
+
         function fetch_course_materials($course_id){
             return DB::fetchAll("SELECT * FROM course_materials
             WHERE course_id = ?

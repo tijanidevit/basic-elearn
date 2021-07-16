@@ -77,13 +77,13 @@ $colors = ['primary','success','danger','info','warning'];
                                             <div class="col-lg-3 col-md-6">
                                                 <div>
                                                     <p class="mb-2"><i class="uil-user text-danger"></i> Tutor </p>
-                                                    <h5 class="font-size-15"><a href="tutor?id=<?php echo $course['tutor_id'] ?>"><?php echo $course['fullname'] ?></a></h5>
+                                                    <h5 class="font-size-15"><a href="profile"><?php echo $course['fullname'] ?></a></h5>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-3 col-md-6">
                                                 <div>
-                                                    <p class="mb-2"><i class="uil-users-alt text-danger"></i> Enrolled tutors </p>
+                                                    <p class="mb-2"><i class="uil-users-alt text-danger"></i> Enrolled students </p>
                                                     <h5 class="font-size-15 text-center"><?php echo $course_obj->student_courses_num($course['id']) ?></h5>
                                                 </div>
                                             </div>
@@ -132,8 +132,13 @@ $colors = ['primary','success','danger','info','warning'];
                                             </li>
                                         <?php endforeach ?>
                                     </ul>
-                                    <div>
-                                        <a class="btn btn-block btn-primary" href="course-class?id=<?php echo $id ?>">Course Materials</a>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <a class="btn btn-block btn-primary" href="course-class?id=<?php echo $id ?>">Add Course Materials</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <a class="btn btn-block btn-primary" href="course-class?id=<?php echo $id ?>">Course Materials</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
